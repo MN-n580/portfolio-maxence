@@ -136,6 +136,10 @@ h1 span, h2 span, .page-title span, .comp-title span {
    4. NAVIGATION PRINCIPALE (SANS BOUTON MENU)
    ========================================================================== */
 
+/* ==========================================================================
+   4. NAVIGATION PRINCIPALE (MODIFIÉE : LOGO GAUCHE / LIENS CENTRÉS)
+   ========================================================================== */
+
 .topnav {
   position: fixed;
   top: 0;
@@ -144,7 +148,7 @@ h1 span, h2 span, .page-title span, .comp-title span {
   z-index: 500;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* Centre les liens au milieu */
   padding: 18px 40px;
   background: rgba(238, 241, 246, 0.85);
   backdrop-filter: blur(10px);
@@ -156,7 +160,10 @@ h1 span, h2 span, .page-title span, .comp-title span {
   background: rgba(255, 255, 255, 0.95);
 }
 
+/* Positionnement absolu pour laisser le logo à gauche sans décaler le centrage */
 .brand {
+  position: absolute;
+  left: 40px;
   font-family: var(--display);
   font-weight: 700;
   font-size: 1.18rem;
@@ -178,7 +185,7 @@ h1 span, h2 span, .page-title span, .comp-title span {
 
 .nav-links {
   display: flex;
-  gap: 4px;
+  gap: 10px; /* Espace entre les liens */
   align-items: center;
 }
 
@@ -189,63 +196,37 @@ h1 span, h2 span, .page-title span, .comp-title span {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--ink-dim);
-  padding: 9px 14px;
+  padding: 8px 16px;
   border-radius: 30px;
-  position: relative;
+  transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
   color: var(--ink);
+  background: var(--bg-soft);
 }
 
 .nav-links a.active {
   color: var(--ink);
   font-weight: 600;
+  background: var(--bg-soft);
 }
 
-.nav-links a.active::after {
-  content: "";
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 3px;
-  height: 2px;
-  background-image: repeating-linear-gradient(90deg, var(--rouge) 0 5px, transparent 5px 9px);
-}
-
-/* Bouton menu retiré complètement */
 .nav-toggle {
   display: none !important;
 }
 
-/* Menu Responsive en ligne */
+/* Adaptation pour mobile (retour au flux normal pour éviter le chevauchement) */
 @media (max-width: 760px) {
   .topnav {
+    justify-content: space-between;
     padding: 15px 22px;
-    flex-direction: column;
-    gap: 12px;
+  }
+  .brand {
+    position: static; /* Annule l'absolu sur mobile */
   }
   .nav-links {
-    position: relative;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    height: auto;
-  }
-  .nav-links a {
-    padding: 8px 12px;
-    border: none;
-    font-size: 10.5px;
-  }
-  .nav-links a.active::after {
-    display: none;
-  }
-  .nav-links a.active {
-    color: var(--rouge);
-    background: var(--bg-card);
-    border-radius: 6px;
+    gap: 4px;
   }
 }
 
