@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compétences — Portfolio BUT R&T</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="page-transition"></div>
+<div id="scan-line"></div>
+
+<nav class="topnav">
+  <a class="brand" href="index.html"><span data-profil-nom>Maxence Nordmann</span><span class="brand-dot"></span></a>
+  <button class="nav-toggle">Menu</button>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="competences.html" class="active">Compétences</a>
+    <a href="projets.html">Projets</a>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="heat-glow"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal">Référentiel de formation</p>
+    <h1 class="page-title reveal"><span class="grad-rouge">Comp</span><span class="grad-orange">é</span><span class="grad-jaune">tences</span></h1>
+    <p class="page-intro reveal">Les trois compétences fondamentales développées au cours de mon cursus Réseaux & Télécommunications, validées par des projets concrets (SAÉ) et des mises en situation professionnelles.</p>
+  </div>
+</div>
+
+<main id="competences-root"></main>
+
+<div id="modal-container">
+  <div class="modal-overlay" id="modal-overlay"></div>
+  <div class="modal-box" id="modal-box">
+    <button class="modal-close" id="modal-close" aria-label="Fermer la fenêtre">
+      <span class="close-line c-l1"></span>
+      <span class="close-line c-l2"></span>
+    </button>
+    <div class="modal-glow" id="m-glow"></div>
+    <div class="modal-scroll" id="m-scroll-container">
+      <div class="modal-head">
+        <span class="m-comp-tag" id="m-comp">——</span>
+        <div class="m-title-row">
+          <span class="m-code" id="m-code">——</span>
+          <h2 class="m-statement" id="m-statement">Chargement...</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="m-section" id="ancre-texte">
+          <p class="m-label">Description détaillée</p>
+          <div class="m-desc-content" id="m-desc"></div>
+        </div>
+        <div class="m-section">
+          <p class="m-label">Projets & SAÉ associés</p>
+          <div class="m-projects-list" id="m-projects"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <div class="heat-bar"></div>
+      <p class="f-name" data-profil-nom>Maxence Nordmann</p>
+      <p class="f-sub" data-profil-formation>BUT Réseaux & Télécommunications</p>
+    </div>
+    <div class="f-links">
+      <a href="index.html">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="competences.html">Compétences</a>
+      <a href="projets.html">Projets</a>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.getElementById('competences-root');
+  if (!root || typeof COMPETENCES === 'undefined') return;
+
+  const compNomComplet = {
+    a: "Administrer les infrastructures réseaux et les systèmes",
+    b: "Connecter les entreprises et les usagers",
+    c: "Programmer des applications et gérer des bases de données"
+  };
+
+  const descriptionsDetaillees = {
+    a: [
+      "Maîtrise complète de la configuration et de la maintenance des architectures réseaux LAN et WAN. Gestion opérationnelle des équipements actifs à travers la mise en place de commutateurs et de routeurs Cisco.",
+      "Mise en œuvre du routage dynamique, du routage inter-VLAN et renforcement de la sécurité des infrastructures réseaux via le déploiement de listes de contrôle d'accès (ACL) standards et étendues.",
+      "Administration courante et sécurisation des systèmes d'exploitation, notamment sous Linux, indispensables au bon fonctionnement des services d'entreprise."
+    ],
+    b: [
+      "Conception, dimensionnement et déploiement d'architectures de transmission et de télécommunications pour interconnecter les usagers et les infrastructures multisites.",
+      "Utilisation avancée d'outils de simulation et de maquettage comme Cisco Packet Tracer pour valider les interconnexions complexes, à l'image des maquettes d'études de réseaux de télécommunications régionaux.",
+      "Analyse des supports de transmission physiques et des protocoles de routage associés pour assurer une haute disponibilité et une qualité de service optimale."
+    ],
+    c: [
+      "Développement d'applications informatiques robustes et structurées, avec une forte expertise acquise sur le langage Python et le framework back-end Django.",
+      "Modélisation complète, conception et manipulation de bases de données relationnelles complexes à l'aide de requêtes SQL et d'outils de gestion de données (MySQL, Microsoft Access).",
+      "Gestion complète du cycle de vie d'un projet de développement : depuis la création des schémas relationnels jusqu'à la mise en place d'interfaces utilisateurs dynamiques et de l'exportation sécurisée de structures de données."
+    ]
+  };
+
+  // Génération des cartes
+  Object.values(COMPETENCES).forEach(c => {
+    const sec = document.createElement('section');
+    sec.className = 'comp wrap';
+    sec.id = c.cle;
+    sec.dataset.c = c.cle;
+
+    sec.innerHTML = `
+      <div class="sec-glow"></div>
+      <div class="comp-head reveal">
+        <span class="comp-num">${c.lettre}</span>
+        <h2 class="comp-title">${c.nom}</h2>
+      </div>
+      <span class="comp-sub reveal">${c.sousTitre}</span>
+      <div class="comp-rule reveal"></div>
+      <div class="ce-list" id="list-${c.cle}"></div>
+    `;
+
+    const list = sec.querySelector(`#list-${c.cle}`);
+    
+    c.items.forEach((it, idx) => {
+      const art = document.createElement('article');
+      art.className = 'ce reveal';
+      
+      const projs = typeof PROJETS !== 'undefined' ? PROJETS.filter(p => p.ce.includes(it.code)) : [];
+      
+      art.innerHTML = `
+        <div class="ce-code">${it.code}</div>
+        <div class="ce-main">
+          <h3 class="ce-statement">${it.statement}</h3>
+          <p class="ce-preview">${it.desc && it.desc[0] ? it.desc[0] : ''}</p>
+        </div>
+        <div class="ce-cta">Savoir plus ${projs.length ? `<span class="ce-count">${projs.length}</span>` : ''}</div>
+      `;
+      
+      art.addEventListener('click', () => openCE(c.cle, idx));
+      list.appendChild(art);
+    });
+    
+    root.appendChild(sec);
+  });
+
+  // Sécurité anti-crash
+  let M;
+  if (typeof setupModal === 'function') {
+    M = setupModal();
+  } else {
+    const container = document.getElementById('modal-container');
+    const overlay = document.getElementById('modal-overlay');
+    const closeBtn = document.getElementById('modal-close');
+    
+    const openFallback = () => {
+      container.classList.add('active');
+      container.style.display = 'block';
+      container.style.opacity = '1';
+      container.style.pointerEvents = 'auto';
+    };
+    const closeFallback = () => {
+      container.classList.remove('active');
+      container.style.display = 'none';
+      container.style.opacity = '0';
+      container.style.pointerEvents = 'none';
+      window.location.hash = ''; // Nettoie l'ancre à la fermeture
+    };
+    
+    if(overlay) overlay.addEventListener('click', closeFallback);
+    if(closeBtn) closeBtn.addEventListener('click', closeFallback);
+    M = { open: openFallback, close: closeFallback };
+  }
+
+  function openCE(key, idx) {
+    const c = COMPETENCES[key];
+    const it = c.items[idx];
+    const projs = typeof PROJETS !== 'undefined' ? PROJETS.filter(p => p.ce.includes(it.code)) : [];
+    
+    document.getElementById('m-comp').textContent = compNomComplet[key] || (c.nom + " — " + c.sousTitre);
+    document.getElementById('m-code').textContent = it.code;
+    document.getElementById('m-statement').textContent = it.statement;
+    
+    const descWrap = document.getElementById('m-desc');
+    const paragraphesText = descriptionsDetaillees[key];
+
+    if (paragraphesText && paragraphesText.length) {
+      descWrap.innerHTML = paragraphesText.map(p => `<p>${p}</p>`).join('');
+    } else {
+      descWrap.innerHTML = `<p class="proj-desc" style="opacity: .6; font-style: italic;">Aucune description détaillée disponible.</p>`;
+    }
+    
+    const projectsWrap = document.getElementById('m-projects');
+    if (projs.length) {
+      projectsWrap.innerHTML = projs.map(p => `
+        <div class="proj">
+          <div class="proj-title">
+            ${p.titre}
+            ${p.lien ? ` <a href="${p.lien}" target="_blank" rel="noopener">Voir le projet ↗</a>` : ''}
+          </div>
+          <p class="proj-desc">${p.resume}</p>
+          <div class="proj-tags">
+            ${p.tags.map(t => `<span class="proj-tag">${t}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+    } else {
+      projectsWrap.innerHTML = `<p class="proj-desc" style="opacity: .5; padding: 8px 0; font-style: italic;">Aucun projet associé configuré.</p>`;
+    }
+    
+    // Étape 1 : Ouvrir la modale graphiquement
+    M.open(key);
+
+    // Étape 2 : Forcer l'ancre HTML directement dans l'URL pour obliger le navigateur à sauter dessus
+    setTimeout(() => {
+      window.location.hash = 'ancre-texte';
+    }, 100); 
+  }
+
+  // Nettoyage de l'ancre si fermeture standard par bouton ou échap
+  const closeBtn = document.getElementById('modal-close');
+  if(closeBtn) {
+    closeBtn.addEventListener('click', () => { window.location.hash = ''; });
+  }
+  const overlay = document.getElementById('modal-overlay');
+  if(overlay) {
+    overlay.addEventListener('click', () => { window.location.hash = ''; });
+  }
+
+  if (typeof observeReveals === 'function') {
+    observeReveals();
+  }
+});
+</script>
+</body>
+</html>

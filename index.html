@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil — Portfolio BUT R&T</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="page-transition"></div>
+<div id="scan-line"></div>
+
+<nav class="topnav">
+  <a class="brand" href="index.html"><span data-profil-nom>Maxence Nordmann</span><span class="brand-dot"></span></a>
+  <button class="nav-toggle">Menu</button>
+  <div class="nav-links">
+    <a href="index.html" class="active">Accueil</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="competences.html">Compétences</a>
+    <a href="projets.html">Projets</a>
+  </div>
+</nav>
+
+<header class="home">
+  <div class="heat-glow"></div>
+  <div class="hero-net" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal" data-idx="0">Portfolio Professionnel</p>
+    <h1 class="reveal" data-idx="1">
+      <span class="l1"><span class="grad-rouge">Admin</span><span class="grad-orange">ist</span><span class="grad-jaune">rer.</span></span>
+      <span class="l1">Connecter. Programmer.</span>
+      <span class="l2">// De l'informatique industrielle aux réseaux sécurisés</span>
+    </h1>
+    
+    <p class="lede reveal" data-idx="2" style="margin-bottom: 24px;">
+      Issu d'un <strong>BTS CIEL</strong> (Cybersécurité, Informatique et réseaux, Électronique), j'ai acquis de solides bases en développement bas niveau et en sécurisation des systèmes. Aujourd'hui étudiant en <strong>BUT Réseaux et Télécommunications</strong>, je combine ces connaissances pour concevoir, déployer et administrer des infrastructures réseaux robustes, tout en poursuivant le développement d'applications full-stack (Python/Django) et la mise en œuvre de solutions de sécurité avancées.
+    </p>
+    
+    <p class="lede reveal" data-idx="3" style="font-size: 1rem; color: var(--ink-dim); max-width: 750px;">
+      Le <strong>BUT Réseaux & Télécommunications</strong> est un parcours d'excellence formant des spécialistes capables de répondre aux défis de la transition numérique. Il s'articule autour de trois piliers majeurs : l'administration des architectures systèmes et réseaux complexes, la connexion des infrastructures de télécommunication physiques ou cloud, et la programmation d'applications connectées sécurisées.
+    </p>
+    
+    <div class="btn-row reveal" data-idx="4" style="margin-top: 30px;">
+      <a href="projets.html" class="btn primary">Voir mes projets →</a>
+      <a href="a-propos.html" class="btn">À propos de moi</a>
+    </div>
+  </div>
+</header>
+
+<section class="home-comps">
+  <div class="wrap">
+    <p class="section-label reveal" data-idx="5">Référentiel de formation</p>
+    <div class="comp-cards" id="home-cards"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <div class="heat-bar"></div>
+      <p class="f-name" data-profil-nom>Maxence Nordmann</p>
+      <p class="f-sub" data-profil-formation>BUT Réseaux & Télécommunications</p>
+    </div>
+    <div class="f-links">
+      <a href="index.html">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="competences.html">Compétences</a>
+      <a href="projets.html">Projets</a>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  // Cette fonction sera appelée proprement par main.js une fois que tout le site est chargé
+  window.buildHomeCards = function() {
+    const cards = document.getElementById('home-cards');
+    if (cards && typeof COMPETENCES !== 'undefined') {
+      cards.innerHTML = '';
+      Object.values(COMPETENCES).forEach((c, i) => {
+        const a = document.createElement('a');
+        a.className = 'comp-card reveal'; 
+        a.href = 'competences.html#' + c.cle; 
+        a.dataset.c = c.cle;
+        a.dataset.idx = i + 5; // Suite des index d'apparition pour le rythme lent
+        a.innerHTML = `
+          <div class="cc-glow"></div>
+          <div class="cc-num">${c.lettre} / Compétence</div>
+          <div class="cc-title">${c.nom}</div>
+          <div class="cc-sub">${c.sousTitre}</div>
+          <span class="cc-link">Découvrir <span class="arrow">↗</span></span>`;
+        cards.appendChild(a);
+      });
+    }
+    // On lance l'observation des animations
+    if (typeof window.observeReveals === 'function') {
+      window.observeReveals();
+    }
+  };
+</script>
+<script src="main.js"></script>
+</body>
+</html>

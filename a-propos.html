@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Portfolio BUT R&T</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="page-transition"></div>
+<div id="scan-line"></div>
+
+<nav class="topnav">
+  <a class="brand" href="index.html"><span data-profil-nom>Maxence Nordmann</span><span class="brand-dot"></span></a>
+  <button class="nav-toggle">Menu</button>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="competences.html">Compétences</a>
+    <a href="projets.html">Projets</a>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="heat-glow"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal">Qui suis-je</p>
+    <h1 class="page-title reveal">À <span class="grad-orange">propos</span></h1>
+    <p class="page-intro reveal">Un aperçu de mon parcours, de mes centres d'intérêt et de ce qui me motive dans les réseaux et le développement.</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="portrait reveal">
+        <div class="ph"><span class="big" data-profil-initiale>M</span><span>Maxence Nordmann</span></div>
+      </div>
+      <div class="about-body reveal">
+        <h2>Bonjour, moi c'est <span data-profil-nom>Maxence Nordmann</span> 👋</h2>
+        <p>Étudiant en BUT Réseaux et Télécommunications (R&T) après l'obtention d'un BTS CIEL (Cybersécurité, Informatique et réseaux, Électronique), je me passionne pour les infrastructures réseaux stables et la sécurisation des systèmes informatiques.</p>
+        <p>Mon attrait pour les aspects techniques m'oriente tout particulièrement vers l'architecture de réseaux complexes (configurations Cisco, routage inter-VLAN, politiques d'accès ACL) ainsi que vers le développement full-stack avec Python et Django. Rigoureux et investi dans le travail d'équipe, je vise à terme une spécialisation dans les systèmes embarqués appliqués au secteur de la défense et du militaire.</p>
+        <div class="tags-row">
+          <span class="tag">Réseaux</span>
+          <span class="tag">Cybersécurité</span>
+          <span class="tag">Développement</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Django / SQL</span>
+          <span class="tag">Cisco Packet Tracer</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <p class="section-label reveal">Mon parcours</p>
+      <div id="timeline-list"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <div class="heat-bar"></div>
+      <p class="f-name" data-profil-nom>Maxence Nordmann</p>
+      <p class="f-sub" data-profil-formation>BUT Réseaux & Télécommunications</p>
+      <p class="f-sub" style="opacity: 0.7; margin-top: 5px;"> Grand Est, France</p>
+    </div>
+    <div class="f-links">
+      <a href="index.html">Accueil</a>
+      <a href="competences.html">Compétences</a>
+      <a href="projets.html">Projets</a>
+      <a href="https://github.com/MN-n580" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 5px;">
+        GitHub ↗
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tl = document.getElementById('timeline-list');
+    if (tl && typeof PARCOURS !== 'undefined') {
+      PARCOURS.forEach((p, i) => {
+        const d = document.createElement('div');
+        d.className = 'tl-item reveal'; 
+        d.dataset.idx = i % 6;
+        d.innerHTML = `
+          <div class="tl-date">${p.date}</div>
+          <div class="tl-title">${p.titre}</div>
+          <div class="tl-desc">${p.desc}</div>`;
+        tl.appendChild(d);
+      });
+    }
+    if (typeof observeReveals === 'function') {
+      observeReveals();
+    }
+  });
+</script>
+</body>
+</html>

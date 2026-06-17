@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets — Portfolio BUT R&T</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="page-transition"></div>
+  <div id="scan-line"></div>
+
+  <nav class="topnav">
+    <a class="brand" href="index.html"><span data-profil-nom>Maxence Nordmann</span><span class="brand-dot"></span></a>
+    <button class="nav-toggle">Menu</button>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="competences.html">Compétences</a>
+      <a href="projets.html" class="active">Projets</a>
+    </div>
+  </nav>
+
+  <div class="page-head">
+    <div class="heat-glow"></div>
+    <div class="wrap">
+      <p class="eyebrow reveal">Travaux et Réalisations</p>
+      <h1 class="page-title reveal">Mes <span class="grad-rouge">Projets</span></h1>
+      <p class="page-intro reveal">Découvre les projets techniques et académiques que j'ai réalisés dans le cadre de mon BUT Réseaux & Télécommunications, mettant en lien compétences pratiques et apprentissages critiques.</p>
+    </div>
+  </div>
+
+  <main class="wrap" style="padding-bottom: 80px;">
+    <div class="project-grid">
+
+      <!-- Projet 1 : SAÉ 2.03 -->
+      <article class="project-card reveal" data-idx="0">
+        <div class="project-header">
+          <span class="project-tag">SAÉ 2.03</span>
+          <span class="project-date">Automne 2025 - Juin 2026</span>
+        </div>
+        <h2 class="project-title">Application Web de Ludothèque & Base de Données</h2>
+        <p class="project-description">
+          Développement d'une application web de gestion de ludothèque avec <strong>Django</strong> et <strong>MySQL</strong>. Conception d'une base de données relationnelle, interface utilisateur responsive et déploiement collaboratif via Git.
+        </p>
+        <div class="project-links" style="margin: 20px 0;">
+          <a href="https://github.com/debenji68/SAE-2.03" target="_blank" rel="noopener" class="btn">
+            Voir le dépôt GitHub ↗
+          </a>
+        </div>
+        <div class="project-skills-block" style="margin-top: 30px; border-top: 1px solid var(--line); padding-top: 20px;">
+          <h3 style="font-family: var(--display); font-size: 16px; margin-bottom: 15px; color: var(--ink);">
+            <span class="grad-orange">Référentiel de Compétences & AC</span>
+          </h3>
+          <div class="skills-framework">
+            <div class="skill-target" style="margin-bottom: 15px; padding: 12px; background: var(--bg-soft); border-radius: 6px;">
+              <strong style="color: var(--jaune); font-family: var(--mono); font-size: 12px; display: block; margin-bottom: 4px;">
+                COMPÉTENCE C : PROGRAMMER
+              </strong>
+              <span style="font-size: 13px; color: var(--ink-dim);">Développement web full-stack et applications informatiques.</span>
+              <ul style="margin-top: 10px; padding-left: 20px; font-size: 13px; color: var(--ink); line-height: 1.6;">
+                <li><strong>AC2401 (RT3-Prog) :</strong> Concevoir et développer des applications et scripts adaptés aux besoins de gestion et d'automatisation.</li>
+                <li><strong>AC2402 :</strong> Modéliser, concevoir et manipuler des bases de données relationnelles complexes.</li>
+                <li><strong>AC2403 :</strong> Collaborer efficacement via des outils de versionnage (Git/GitHub) avec gestion fine des branches.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projet 2 : Réseau Inter-VLAN -->
+      <article class="project-card reveal" data-idx="1">
+        <div class="project-header">
+          <span class="project-tag">SAÉ 2.01 / TP</span>
+          <span class="project-date">Mars 2026</span>
+        </div>
+        <h2 class="project-title">Architecture Réseau Inter-VLAN & Sécurisation ACL</h2>
+        <p class="project-description">
+          Maquettage et configuration d'une infrastructure réseau multi-sites (simulations Colmar / Strasbourg) sur <strong>Cisco Packet Tracer</strong>. Déploiement du routage inter-VLAN, configuration des commutateurs et mise en place de politiques de sécurité strictes via des listes de contrôle d'accès (ACL Standard et Extended).
+        </p>
+        <div class="project-skills-block" style="margin-top: 30px; border-top: 1px solid var(--line); padding-top: 20px;">
+          <h3 style="font-family: var(--display); font-size: 16px; margin-bottom: 15px; color: var(--ink);">
+            <span class="grad-orange">Référentiel de Compétences & AC</span>
+          </h3>
+          <div class="skills-framework">
+            <div class="skill-target" style="margin-bottom: 15px; padding: 12px; background: var(--bg-soft); border-radius: 6px;">
+              <strong style="color: var(--rouge); font-family: var(--mono); font-size: 12px; display: block; margin-bottom: 4px;">
+                COMPÉTENCE A & B : ADMINISTRER / CONNECTER
+              </strong>
+              <span style="font-size: 13px; color: var(--ink-dim);">Infrastructures réseaux, systèmes et architectures physiques.</span>
+              <ul style="margin-top: 10px; padding-left: 20px; font-size: 13px; color: var(--ink); line-height: 1.6;">
+                <li><strong>AC2101 (RT1-Admin) :</strong> Configurer les fonctions de routage et de commutation de base et avancées.</li>
+                <li><strong>AC2104 :</strong> Sécuriser les accès et les flux de données réseau par l'implémentation de règles de pare-feu et d'ACLs.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projet 3 : Web Radio ESP32 -->
+      <article class="project-card reveal" data-idx="2">
+        <div class="project-header">
+          <span class="project-tag">SAÉ 2.02</span>
+          <span class="project-date">Printemps 2026</span>
+        </div>
+        <h2 class="project-title">Lecteur Portable de Radio Internet (ESP32 & VS1053)</h2>
+        <p class="project-description">
+          Conception d'une Web Radio autonome communicant en Wi-Fi pour récupérer et décoder des flux audio en streaming (MP3, AAC). Ce projet inclut la programmation en C++ (IDE Arduino) pour piloter le CoDec audio <strong>VS1053b</strong> via le bus de communication matériel <strong>SPI</strong>, la gestion d'un égaliseur de tonalité (graves et aigus), l'effet de spatialisation <em>EarSpeaker</em> et le développement d'une interface web embarquée sur l'<strong>ESP32</strong> pour le contrôle à distance.
+        </p>
+        <div class="project-skills-block" style="margin-top: 30px; border-top: 1px solid var(--line); padding-top: 20px;">
+          <h3 style="font-family: var(--display); font-size: 16px; margin-bottom: 15px; color: var(--ink);">
+            <span class="grad-orange">Référentiel de Compétences & AC</span>
+          </h3>
+          <div class="skills-framework">
+            <div class="skill-target" style="margin-bottom: 15px; padding: 12px; background: var(--bg-soft); border-radius: 6px;">
+              <strong style="color: var(--rouge); font-family: var(--mono); font-size: 12px; display: block; margin-bottom: 4px;">
+                COMPÉTENCE B & C : CONNECTER / PROGRAMMER
+              </strong>
+              <span style="font-size: 13px; color: var(--ink-dim);">Systèmes électroniques connectés et interfaces logicielles matérielles.</span>
+              <ul style="margin-top: 10px; padding-left: 20px; font-size: 13px; color: var(--ink); line-height: 1.6;">
+                <li><strong>AC2201 (RT2-Conn) :</strong> Configurer les paramètres d'une interface de transmission pour interconnecter des équipements connectés.</li>
+                <li><strong>AC2401 (RT3-Prog) :</strong> Établir des programmes exploitant des bus de données industriels et manipuler les registres de composants électroniques dédiés.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projet 4 : Dispositif Hyperventilation -->
+      <article class="project-card reveal" data-idx="3">
+        <div class="project-header">
+          <span class="project-tag">Projet de Fin d'Études</span>
+          <span class="project-date">2023 - 2025</span>
+        </div>
+        <h2 class="project-title">Dispositif Embarqué de Mesure de l'Hyperventilation</h2>
+        <p class="project-description">
+          Projet collaboratif de développement d'un dispositif médical en partenariat avec le laboratoire <strong>DEVAH</strong>. En tant que responsable du <strong>système embarqué de gestion respiratoire</strong>, j'ai réalisé la modélisation UML, conçu l'interface homme-machine (IHM) sur écran pour le paramétrage des séances, implémenté l'étalonnage et le traitement du signal de débit en temps réel pour le calcul du volume courant et de la fréquence par cycle, sécurisé les alarmes et configuré la transmission des données via un module Bluetooth <strong>HC-06</strong>.
+        </p>
+        <div class="project-links" style="margin: 20px 0;">
+          <a href="Copie de Rapport de projet HYPERVENTILATION.docx.pdf" target="_blank" rel="noopener" class="btn">
+            Lire le rapport complet (PDF) ↗
+          </a>
+        </div>
+        <div class="project-skills-block" style="margin-top: 30px; border-top: 1px solid var(--line); padding-top: 20px;">
+          <h3 style="font-family: var(--display); font-size: 16px; margin-bottom: 15px; color: var(--ink);">
+            <span class="grad-orange">Référentiel de Compétences & AC</span>
+          </h3>
+          <div class="skills-framework">
+            <div class="skill-target" style="margin-bottom: 15px; padding: 12px; background: var(--bg-soft); border-radius: 6px;">
+              <strong style="color: var(--rouge); font-family: var(--mono); font-size: 12px; display: block; margin-bottom: 4px;">
+                PARCOURS ÉLECTRONIQUE & SYSTÈMES EMBARQUÉS (BTS CIEL)
+              </strong>
+              <span style="font-size: 13px; color: var(--ink-dim);">Conception de solutions matérielles et logicielles pour l'informatique industrielle.</span>
+              <ul style="margin-top: 10px; padding-left: 20px; font-size: 13px; color: var(--ink); line-height: 1.6;">
+                <li><strong>Développement Industriel :</strong> Programmation bas niveau en C/C++ appliquée aux microcontrôleurs pour la gestion d'IHM et de signaux analogiques.</li>
+                <li><strong>Traitement & Communication :</strong> Conversion de grandeurs physiques (débit d'air), algorithmes de calculs de cycles et transmission sans fil Bluetooth.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>
+        <div class="heat-bar"></div>
+        <p class="f-name" data-profil-nom>Maxence Nordmann</p>
+        <p class="f-sub" data-profil-formation>BUT Réseaux & Télécommunications</p>
+      </div>
+      <div class="f-links">
+        <a href="index.html">Accueil</a><a href="a-propos.html">À propos</a>
+        <a href="competences.html">Compétences</a><a href="projets.html">Projets</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
